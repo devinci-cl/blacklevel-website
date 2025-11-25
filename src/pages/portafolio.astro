@@ -1,0 +1,600 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Portafolio - Blacklevel</title>
+		<style>
+			/* Estilos para el modal */
+			#project-modal {
+				backdrop-filter: blur(8px);
+			}
+
+			#image-slider .slide {
+				transition: opacity 0.5s ease-in-out;
+			}
+
+			#slider-indicators .indicator {
+				cursor: pointer;
+			}
+
+			#slider-indicators .indicator:hover {
+				background-color: rgba(255, 255, 255, 0.6) !important;
+			}
+
+			/* Scrollbar personalizado para el contenido del modal */
+			#modal-content::-webkit-scrollbar {
+				width: 6px;
+			}
+
+			#modal-content::-webkit-scrollbar-track {
+				background: rgba(255, 255, 255, 0.05);
+			}
+
+			#modal-content::-webkit-scrollbar-thumb {
+				background: rgba(255, 255, 255, 0.2);
+				border-radius: 3px;
+			}
+
+			#modal-content::-webkit-scrollbar-thumb:hover {
+				background: rgba(255, 255, 255, 0.3);
+			}
+		</style>
+	</head>
+	<body class="bg-black min-h-screen overflow-x-hidden">
+		<!-- Navegación -->
+		<nav id="nav" class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-black/40 border-b border-white/10 shadow-2xl">
+			<div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+				<a href="/" class="text-2xl font-bold text-white tracking-tighter">
+					<span class="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">Blacklevel</span>
+				</a>
+				<ul class="flex gap-8 items-center">
+					<li><a href="/" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">HOME</a></li>
+					<li><a href="/que-hacemos" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">QUÉ HACEMOS</a></li>
+					<li><a href="/como-lo-hacemos" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">CÓMO LO HACEMOS</a></li>
+					<li><a href="/quienes-somos" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">NOSOTROS</a></li>
+					<li><a href="/portafolio" class="text-white text-xs font-medium tracking-wide transition-colors duration-300">PORTAFOLIO</a></li>
+					<li>
+						<a href="/contacto" class="bg-white text-black px-6 py-2.5 rounded-full text-xs font-bold tracking-wide hover:bg-gray-100 transition-all duration-300 shadow-lg shadow-white/20 hover:shadow-xl hover:shadow-white/30 hover:scale-105">
+							CONTACTO
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Contenido -->
+		<section class="min-h-screen pt-32 pb-20">
+			<div class="max-w-6xl mx-auto px-6">
+				<h1 id="title" class="text-6xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+					Portafolio
+				</h1>
+				<p id="subtitle" class="text-2xl text-gray-400 font-light mb-16 max-w-3xl">
+					Proyectos que demuestran nuestra pasión por la excelencia digital.
+				</p>
+				
+				<div id="projects" class="grid md:grid-cols-2 gap-8">
+					<div class="project-card group cursor-pointer" data-project="0">
+						<div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-all duration-300">
+							<div class="aspect-video bg-gradient-to-br from-purple-900/20 to-blue-900/20 relative overflow-hidden">
+								<img id="project-image-0" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300" alt="Impulsores" />
+							</div>
+							<div class="p-6">
+								<h3 class="text-2xl font-bold text-white mb-2 group-hover:text-gray-300 transition-colors">Impulsores</h3>
+								<p class="text-gray-400 mb-4">Equipo profesional que impulsa tu marca al siguiente nivel</p>
+								<div class="flex gap-2 hidden">
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Talento</span>
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Profesionalismo</span>
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Experiencia</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card group cursor-pointer" data-project="1">
+						<div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-all duration-300">
+							<div class="aspect-video bg-gradient-to-br from-green-900/20 to-teal-900/20 relative overflow-hidden">
+								<img id="project-image-1" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300" alt="Eventos" />
+							</div>
+							<div class="p-6">
+								<h3 class="text-2xl font-bold text-white mb-2 group-hover:text-gray-300 transition-colors">Eventos</h3>
+								<p class="text-gray-400 mb-4">Planificamos y ejecutamos eventos corporativos de principio a fin</p>
+								<div class="flex gap-2 hidden">
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Producción</span>
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Logística</span>
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Coordinación</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card group cursor-pointer" data-project="2">
+						<div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-all duration-300">
+							<div class="aspect-video bg-gradient-to-br from-orange-900/20 to-red-900/20 relative overflow-hidden">
+								<img id="project-image-2" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300" alt="Activaciones" />
+							</div>
+							<div class="p-6">
+								<h3 class="text-2xl font-bold text-white mb-2 group-hover:text-gray-300 transition-colors">Activaciones</h3>
+								<p class="text-gray-400 mb-4">Experiencias inolvidables que conectan emocionalmente con tu audiencia</p>
+								<div class="flex gap-2 hidden">
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Experiencias</span>
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Sampling</span>
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Engagement</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card group cursor-pointer hidden" data-project="3">
+						<div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-600 transition-all duration-300">
+							<div class="aspect-video bg-gradient-to-br from-pink-900/20 to-purple-900/20 flex items-center justify-center">
+								<span class="text-4xl font-bold text-white/20">04</span>
+							</div>
+							<div class="p-6">
+								<h3 class="text-2xl font-bold text-white mb-2 group-hover:text-gray-300 transition-colors">Real Estate Portal</h3>
+								<p class="text-gray-400 mb-4">Portal inmobiliario con búsqueda avanzada y tours virtuales</p>
+								<div class="flex gap-2">
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Next.js</span>
+									<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">Three.js</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Modal -->
+		<div id="project-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8">
+			<!-- Overlay -->
+			<div id="modal-overlay" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+			
+			<!-- Modal Content -->
+			<div id="modal-content" class="relative z-10 w-full max-w-6xl max-h-[90vh] overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 to-black border border-white/10 shadow-2xl">
+				<!-- Botón cerrar -->
+				<button id="close-modal" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+
+				<div class="flex flex-col md:flex-row h-full max-h-[90vh]">
+					<!-- Slider de imágenes -->
+					<div class="relative w-full md:w-1/2 bg-black/50 flex-shrink-0">
+						<div id="image-slider" class="relative h-full min-h-[300px] md:min-h-[600px] overflow-hidden">
+							<!-- Las imágenes se cargarán aquí dinámicamente -->
+						</div>
+						
+						<!-- Botones de navegación del slider -->
+						<button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 z-10">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+							</svg>
+						</button>
+						<button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 z-10">
+							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</button>
+
+						<!-- Indicadores del slider -->
+						<div id="slider-indicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+							<!-- Se generan dinámicamente -->
+						</div>
+					</div>
+
+					<!-- Contenido de texto -->
+					<div class="w-full md:w-1/2 p-6 md:p-12 overflow-y-auto">
+						<div id="modal-title" class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight"></div>
+						<div id="modal-description" class="text-base md:text-lg text-gray-400 leading-relaxed mb-6"></div>
+						<!-- Texto de la imagen actual -->
+						<div id="image-text" class="mb-6 p-4 bg-white/5 border border-white/10 rounded-xl">
+							<p class="text-sm md:text-base text-gray-300 leading-relaxed"></p>
+						</div>
+						<div id="modal-details" class="space-y-4">
+							<!-- Detalles adicionales se cargarán aquí -->
+						</div>
+						<div id="modal-tags" class="flex flex-wrap gap-2 mt-8 hidden">
+							<!-- Tags se cargarán aquí -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			</div>
+		</section>
+
+		<!-- Botón flotante de WhatsApp -->
+		<a 
+			href="https://wa.me/521234567890?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" 
+			target="_blank"
+			rel="noopener noreferrer"
+			id="whatsapp-btn"
+			class="fixed bottom-8 right-8 bg-gradient-to-br from-green-400 to-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 hover:shadow-green-500/50 hover:from-green-500 hover:to-green-700 transition-all duration-300 hover:scale-110 z-50 border border-green-400/20"
+			aria-label="Contactar por WhatsApp"
+		>
+			<svg class="w-8 h-8 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+				<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+			</svg>
+		</a>
+	</body>
+</html>
+
+<script>
+	import { gsap } from 'gsap';
+
+	gsap.fromTo('#nav', 
+		{ y: -100, opacity: 0 },
+		{ y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+	);
+
+	gsap.fromTo('#title',
+		{ opacity: 0, y: 30 },
+		{ opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: 'power2.out' }
+	);
+
+	gsap.fromTo('#subtitle',
+		{ opacity: 0, y: 20 },
+		{ opacity: 1, y: 0, duration: 0.8, delay: 0.4, ease: 'power2.out' }
+	);
+
+	gsap.fromTo('.project-card',
+		{ opacity: 0, y: 30 },
+		{ opacity: 1, y: 0, duration: 0.6, delay: 0.6, stagger: 0.1, ease: 'power2.out' }
+	);
+
+	// Datos de los proyectos
+	const projectsData = [
+		{
+			title: 'Impulsores',
+			description: 'Nuestro equipo de impulsores profesionales lleva tu marca directamente al consumidor. Capacitados, carismáticos y comprometidos con cada activación.',
+			images: [
+				{ src: '/images/impulsores/imp_carozzi.png', text: 'Activación para Carozzi: Nuestros impulsores representaron la marca con profesionalismo, ejecutando una estrategia de sampling que conectó directamente con los consumidores en punto de venta.' },
+				{ src: '/images/impulsores/imp_creativeline.png', text: 'Proyecto Creativeline: Equipo especializado en activaciones creativas que generaron alto impacto y recordación de marca en eventos masivos.' },
+				{ src: '/images/impulsores/imp_patron.png', text: 'Campaña Patrón: Impulsores capacitados en la cultura de la marca, transmitiendo valores premium y generando experiencias memorables para los consumidores.' },
+				{ src: '/images/impulsores/imp_trago.png', text: 'Activación Trago: Nuestro equipo ejecutó una estrategia integral de promoción, combinando talento humano y creatividad para maximizar el alcance de la marca.' }
+			],
+			tags: ['Talento', 'Profesionalismo', 'Experiencia', 'Compromiso'],
+			details: [
+				{ label: 'Equipo', value: 'Más de 200 impulsores' },
+				{ label: 'Cobertura', value: 'Nacional' },
+				{ label: 'Experiencia', value: '10+ años' }
+			]
+		},
+		{
+			title: 'Eventos',
+			description: 'Planificamos y ejecutamos eventos corporativos de principio a fin. Desde lanzamientos de producto hasta convenciones, creamos experiencias únicas que superan expectativas y generan recordación de marca.',
+			images: [
+				{ src: '/images/activaciones/acti_indomita.png', text: 'Evento Indómita: Producción completa de evento corporativo con atención impecable al detalle, logística perfecta y experiencia memorable para los asistentes.' },
+				{ src: '/images/activaciones/acti_mecadopago.png', text: 'Convención Mercado Pago: Evento masivo con producción audiovisual de alto nivel, coordinación de múltiples áreas y ejecución impecable.' },
+				{ src: '/images/activaciones/acti_skechers.png', text: 'Lanzamiento Skechers: Evento de lanzamiento de producto con producción completa, desde la planificación estratégica hasta la ejecución final.' },
+				{ src: '/images/activaciones/acti_underarmor.png', text: 'Evento Under Armour: Producción de evento deportivo premium con todas las áreas coordinadas para crear una experiencia excepcional.' }
+			],
+			tags: ['Producción', 'Logística', 'Coordinación', 'Ejecución'],
+			details: [
+				{ label: 'Alcance', value: 'Nacional e Internacional' },
+				{ label: 'Año', value: '2024' },
+				{ label: 'Experiencia', value: '10+ años' }
+			]
+		},
+		{
+			title: 'Activaciones',
+			description: 'Creamos experiencias inolvidables que conectan emocionalmente con tu audiencia. Desde samplings hasta eventos masivos, cada activación está diseñada para generar impacto y recordación de marca.',
+			images: [
+				{ src: '/images/super/sup_mrbig.png', text: 'Activación Mr. Big: Experiencia de sampling creativa que conectó la marca directamente con los consumidores, generando alto engagement y recordación.' },
+				{ src: '/images/super/sup_quilque.png', text: 'Campaña Quilque: Activación estratégica que combinó creatividad y ejecución impecable para maximizar el impacto de la marca en punto de venta.' },
+				{ src: '/images/super/sup_soprole.png', text: 'Proyecto Soprole: Activación integral que generó experiencias memorables y conexión emocional con la audiencia objetivo de la marca.' }
+			],
+			tags: ['Experiencias', 'Sampling', 'Engagement', 'Creatividad'],
+			details: [
+				{ label: 'Alcance', value: 'Nacional' },
+				{ label: 'Año', value: '2024' },
+				{ label: 'Impacto', value: 'Alto engagement' }
+			]
+		},
+		// Proyecto oculto - Real Estate Portal
+		// {
+		// 	title: 'Real Estate Portal',
+		// 	description: 'Portal inmobiliario innovador con búsqueda avanzada, tours virtuales en 3D y sistema de agendamiento de visitas. Integración con mapas interactivos, calculadora de hipotecas y sistema de favoritos para usuarios registrados.',
+		// 	images: [
+		// 		{ src: '/imagenes/portafolio/realestate-1.jpg', text: '' },
+		// 		{ src: '/imagenes/portafolio/realestate-2.jpg', text: '' },
+		// 		{ src: '/imagenes/portafolio/realestate-3.jpg', text: '' }
+		// 	],
+		// 	tags: ['Next.js', 'Three.js', 'TypeScript'],
+		// 	details: [
+		// 		{ label: 'Cliente', value: 'Inmobiliaria Premium' },
+		// 		{ label: 'Año', value: '2024' },
+		// 		{ label: 'Duración', value: '5 meses' }
+		// 	]
+		// }
+	];
+
+	// Función para seleccionar una imagen aleatoria de un proyecto
+	function getRandomImage(project: typeof projectsData[0]): string {
+		const images = project.images;
+		const normalizedImages = images.map(img => {
+			if (typeof img === 'string') {
+				return { src: img, text: '' };
+			}
+			return img;
+		});
+		
+		if (normalizedImages.length === 0) return '';
+		
+		const randomIndex = Math.floor(Math.random() * normalizedImages.length);
+		return normalizedImages[randomIndex].src;
+	}
+
+	// Cargar imágenes aleatorias en las tarjetas del portafolio
+	projectsData.forEach((project, index) => {
+		const imageElement = document.getElementById(`project-image-${index}`);
+		if (imageElement) {
+			const randomImage = getRandomImage(project);
+			if (randomImage) {
+				(imageElement as HTMLImageElement).src = randomImage;
+				(imageElement as HTMLImageElement).onerror = function() {
+					// Si la imagen falla, mostrar un placeholder
+					this.style.display = 'none';
+				};
+			}
+		}
+	});
+
+	// Elementos del modal
+	const modal = document.getElementById('project-modal');
+	const modalOverlay = document.getElementById('modal-overlay');
+	const modalContent = document.getElementById('modal-content');
+	const closeModalBtn = document.getElementById('close-modal');
+	const imageSlider = document.getElementById('image-slider');
+	const sliderIndicators = document.getElementById('slider-indicators');
+	const prevSlideBtn = document.getElementById('prev-slide');
+	const nextSlideBtn = document.getElementById('next-slide');
+	const modalTitle = document.getElementById('modal-title');
+	const modalDescription = document.getElementById('modal-description');
+	const modalDetails = document.getElementById('modal-details');
+	const modalTags = document.getElementById('modal-tags');
+	const imageText = document.getElementById('image-text');
+	const imageTextContent = imageText?.querySelector('p');
+
+	let currentProject: typeof projectsData[0] | null = null;
+	let currentSlideIndex = 0;
+
+	// Función para abrir el modal
+	function openModal(projectIndex: number) {
+		currentProject = projectsData[projectIndex];
+		currentSlideIndex = 0;
+
+		if (!currentProject || !modal) return;
+
+		// Actualizar contenido del modal
+		if (modalTitle) modalTitle.textContent = currentProject.title;
+		if (modalDescription) modalDescription.textContent = currentProject.description;
+
+		// Actualizar detalles (excluir "Experiencia" y "Alcance")
+		if (modalDetails) {
+			const filteredDetails = currentProject.details.filter(detail => 
+				detail.label !== 'Experiencia' && detail.label !== 'Alcance'
+			);
+			modalDetails.innerHTML = filteredDetails.map(detail => `
+				<div class="border-b border-white/5 pb-2">
+					<span class="text-xs text-gray-500 uppercase tracking-wider">${detail.label}</span>
+					<p class="text-white font-medium">${detail.value}</p>
+				</div>
+			`).join('');
+		}
+
+		// Actualizar tags
+		if (modalTags) {
+			modalTags.innerHTML = currentProject.tags.map(tag => `
+				<span class="text-xs px-3 py-1 bg-white/10 text-gray-300 rounded-full">${tag}</span>
+			`).join('');
+		}
+
+		// Cargar imágenes del slider
+		loadSliderImages(currentProject.images);
+		
+		// Mostrar texto de la primera imagen
+		updateImageText(0);
+
+		// Mostrar modal
+		modal.classList.remove('hidden');
+		modal.classList.add('flex');
+		document.body.style.overflow = 'hidden';
+
+		// Animación de entrada
+		gsap.fromTo(modalOverlay,
+			{ opacity: 0 },
+			{ opacity: 1, duration: 0.3 }
+		);
+
+		gsap.fromTo(modalContent,
+			{ opacity: 0, scale: 0.9, y: 50 },
+			{ opacity: 1, scale: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+		);
+	}
+
+	// Función para cerrar el modal
+	function closeModal() {
+		if (!modal) return;
+
+		gsap.to(modalContent,
+			{ opacity: 0, scale: 0.9, y: 50, duration: 0.3, ease: 'power2.in' }
+		);
+
+		gsap.to(modalOverlay,
+			{ opacity: 0, duration: 0.3, onComplete: () => {
+				modal.classList.add('hidden');
+				modal.classList.remove('flex');
+				document.body.style.overflow = '';
+			}}
+		);
+	}
+
+	// Función para cargar imágenes en el slider
+	function loadSliderImages(images: Array<{ src: string; text: string }> | string[]) {
+		if (!imageSlider || !sliderIndicators) return;
+
+		// Limpiar slider
+		imageSlider.innerHTML = '';
+		sliderIndicators.innerHTML = '';
+
+		// Normalizar imágenes (pueden ser strings o objetos)
+		const normalizedImages = images.map(img => {
+			if (typeof img === 'string') {
+				return { src: img, text: '' };
+			}
+			return img;
+		});
+
+		// Crear slides
+		normalizedImages.forEach((image, index) => {
+			const slide = document.createElement('div');
+			slide.className = `slide absolute inset-0 ${index === 0 ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`;
+			slide.innerHTML = `
+				<img 
+					src="${image.src}" 
+					alt="${currentProject?.title} - Imagen ${index + 1}"
+					class="w-full h-full object-cover"
+					onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'600\'%3E%3Crect fill=\'%23111111\' width=\'800\' height=\'600\'/%3E%3Ctext fill=\'%23333\' font-family=\'Arial\' font-size=\'24\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3EImagen ${index + 1}%3C/text%3E%3C/svg%3E'"
+				/>
+			`;
+			imageSlider.appendChild(slide);
+
+			// Crear indicador
+			const indicator = document.createElement('button');
+			indicator.className = `indicator w-2 h-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-white' : 'bg-white/30'}`;
+			indicator.addEventListener('click', () => goToSlide(index));
+			sliderIndicators.appendChild(indicator);
+		});
+
+		currentSlideIndex = 0;
+		updateSliderButtons();
+	}
+
+	// Función para actualizar el texto de la imagen actual
+	function updateImageText(index: number) {
+		if (!currentProject || !imageTextContent) return;
+
+		const images = currentProject.images;
+		const normalizedImages = images.map(img => {
+			if (typeof img === 'string') {
+				return { src: img, text: '' };
+			}
+			return img;
+		});
+
+		if (index >= 0 && index < normalizedImages.length) {
+			const imageData = normalizedImages[index];
+			if (imageData.text) {
+				imageTextContent.textContent = imageData.text;
+				if (imageText) {
+					imageText.style.display = 'block';
+				}
+			} else {
+				if (imageText) {
+					imageText.style.display = 'none';
+				}
+			}
+		}
+	}
+
+	// Función para ir a un slide específico
+	function goToSlide(index: number) {
+		if (!currentProject || !imageSlider) return;
+
+		const slides = imageSlider.querySelectorAll('.slide');
+		const indicators = sliderIndicators?.querySelectorAll('.indicator');
+
+		if (index < 0 || index >= slides.length) return;
+
+		// Ocultar slide actual
+		gsap.to(slides[currentSlideIndex], { opacity: 0, duration: 0.3 });
+
+		// Mostrar nuevo slide
+		currentSlideIndex = index;
+		gsap.to(slides[currentSlideIndex], { opacity: 1, duration: 0.3 });
+
+		// Actualizar indicadores
+		if (indicators) {
+			indicators.forEach((ind, i) => {
+				if (i === index) {
+					ind.classList.remove('bg-white/30');
+					ind.classList.add('bg-white');
+				} else {
+					ind.classList.remove('bg-white');
+					ind.classList.add('bg-white/30');
+				}
+			});
+		}
+
+		// Actualizar texto de la imagen
+		updateImageText(index);
+
+		updateSliderButtons();
+	}
+
+	// Función para actualizar estado de botones del slider
+	function updateSliderButtons() {
+		if (!currentProject) return;
+
+		const imageCount = currentProject.images.length;
+		const hasPrev = currentSlideIndex > 0;
+		const hasNext = currentSlideIndex < imageCount - 1;
+
+		if (prevSlideBtn) {
+			prevSlideBtn.style.opacity = hasPrev ? '1' : '0.3';
+			prevSlideBtn.style.pointerEvents = hasPrev ? 'auto' : 'none';
+		}
+
+		if (nextSlideBtn) {
+			nextSlideBtn.style.opacity = hasNext ? '1' : '0.3';
+			nextSlideBtn.style.pointerEvents = hasNext ? 'auto' : 'none';
+		}
+	}
+
+	// Event listeners
+	document.querySelectorAll('.project-card').forEach((card, index) => {
+		card.addEventListener('click', () => openModal(index));
+	});
+
+	if (closeModalBtn) {
+		closeModalBtn.addEventListener('click', closeModal);
+	}
+
+	if (modalOverlay) {
+		modalOverlay.addEventListener('click', closeModal);
+	}
+
+	if (prevSlideBtn) {
+		prevSlideBtn.addEventListener('click', () => {
+			if (currentProject && currentSlideIndex > 0) {
+				goToSlide(currentSlideIndex - 1);
+			}
+		});
+	}
+
+	if (nextSlideBtn) {
+		nextSlideBtn.addEventListener('click', () => {
+			if (currentProject) {
+				const images = currentProject.images;
+				const imageCount = Array.isArray(images) ? images.length : 0;
+				if (currentSlideIndex < imageCount - 1) {
+					goToSlide(currentSlideIndex + 1);
+				}
+			}
+		});
+	}
+
+	// Cerrar modal con ESC
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+			closeModal();
+		}
+	});
+</script>
