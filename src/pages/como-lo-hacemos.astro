@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
 ---
 
 <html lang="es">
@@ -12,25 +13,7 @@ import '../styles/global.css';
 	</head>
 	<body class="bg-black min-h-screen overflow-x-hidden">
 		<!-- Navegación -->
-		<nav id="nav" class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-black/40 border-b border-white/10 shadow-2xl">
-			<div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
-				<a href="/" class="text-2xl font-bold text-white tracking-tighter">
-					<span class="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">Blacklevel</span>
-				</a>
-				<ul class="flex gap-8 items-center">
-					<li><a href="/" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">HOME</a></li>
-					<li><a href="/que-hacemos" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">QUÉ HACEMOS</a></li>
-					<li><a href="/como-lo-hacemos" class="text-white text-xs font-medium tracking-wide transition-colors duration-300">CÓMO LO HACEMOS</a></li>
-					<li><a href="/quienes-somos" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">NOSOTROS</a></li>
-					<li><a href="/portafolio" class="text-gray-400 text-xs font-medium tracking-wide hover:text-white transition-colors duration-300">PORTAFOLIO</a></li>
-					<li>
-						<a href="/contacto" class="bg-white text-black px-6 py-2.5 rounded-full text-xs font-bold tracking-wide hover:bg-gray-100 transition-all duration-300 shadow-lg shadow-white/20 hover:shadow-xl hover:shadow-white/30 hover:scale-105">
-							CONTACTO
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+		<Nav active="como-lo-hacemos" />
 
 		<!-- Contenido -->
 		<section class="min-h-screen pt-32 pb-20">
@@ -39,7 +22,7 @@ import '../styles/global.css';
 					Cómo lo hacemos
 				</h1>
 				<p id="subtitle" class="text-2xl text-gray-400 font-light mb-16 max-w-3xl">
-					Nuestro proceso está diseñado para garantizar resultados excepcionales.
+					Un proceso probado que garantiza el éxito de cada activación, evento y campaña.
 				</p>
 				
 				<div id="process" class="space-y-12">
@@ -50,9 +33,9 @@ import '../styles/global.css';
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-bold text-white mb-3">Descubrimiento</h3>
+							<h3 class="text-3xl font-bold text-white mb-3">Briefing y Estrategia</h3>
 							<p class="text-gray-400 text-lg leading-relaxed">
-								Comenzamos entendiendo tu visión, objetivos y desafíos. Analizamos tu mercado y competencia para crear una estrategia sólida.
+								Nos reunimos contigo para entender los objetivos de tu marca, el público objetivo y los KPIs esperados. Diseñamos una estrategia a medida que maximiza el impacto de cada acción.
 							</p>
 						</div>
 					</div>
@@ -64,9 +47,9 @@ import '../styles/global.css';
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-bold text-white mb-3">Diseño</h3>
+							<h3 class="text-3xl font-bold text-white mb-3">Selección y Capacitación</h3>
 							<p class="text-gray-400 text-lg leading-relaxed">
-								Creamos prototipos y diseños que reflejan tu marca. Iteramos contigo hasta conseguir la experiencia perfecta.
+								Elegimos al equipo ideal de promotores e impulsores según el perfil de tu marca. Los capacitamos en producto, técnicas de venta y protocolo para representarte con excelencia.
 							</p>
 						</div>
 					</div>
@@ -78,9 +61,9 @@ import '../styles/global.css';
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-bold text-white mb-3">Desarrollo</h3>
+							<h3 class="text-3xl font-bold text-white mb-3">Producción y Logística</h3>
 							<p class="text-gray-400 text-lg leading-relaxed">
-								Construimos tu producto con código limpio, escalable y optimizado. Seguimos las mejores prácticas de la industria.
+								Coordinamos todos los aspectos operativos: materiales POP, uniformes, traslados, permisos y montaje. Nos encargamos de cada detalle para que todo fluya sin contratiempos.
 							</p>
 						</div>
 					</div>
@@ -92,9 +75,23 @@ import '../styles/global.css';
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-bold text-white mb-3">Lanzamiento</h3>
+							<h3 class="text-3xl font-bold text-white mb-3">Ejecución en Terreno</h3>
 							<p class="text-gray-400 text-lg leading-relaxed">
-								Desplegamos tu producto con confianza y brindamos soporte continuo para asegurar su éxito a largo plazo.
+								Nuestro equipo despliega la activación con supervisión en tiempo real. Monitoreamos el desempeño, resolvemos imprevistos y aseguramos que cada interacción con el consumidor sea memorable.
+							</p>
+						</div>
+					</div>
+
+					<div class="process-step flex gap-6">
+						<div class="flex-shrink-0">
+							<div class="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center text-2xl font-bold">
+								5
+							</div>
+						</div>
+						<div>
+							<h3 class="text-3xl font-bold text-white mb-3">Reportería y Análisis</h3>
+							<p class="text-gray-400 text-lg leading-relaxed">
+								Entregamos informes detallados con métricas de alcance, interacciones, ventas generadas y feedback del consumidor. Analizamos los resultados para optimizar futuras campañas.
 							</p>
 						</div>
 					</div>
